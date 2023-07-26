@@ -1,0 +1,3 @@
+/Users/Galaxy/CLionProjects/main/cmake-build-debug/CMakeFiles/main.elf.dir
+/Users/Galaxy/CLionProjects/main/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/Galaxy/CLionProjects/main/cmake-build-debug/CMakeFiles/rebuild_cache.dir
