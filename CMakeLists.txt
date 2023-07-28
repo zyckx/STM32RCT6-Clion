@@ -49,7 +49,7 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(Core/Inc Drivers/STM32F1xx_HAL_Driver/Inc Drivers/STM32F1xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F1xx/Include Drivers/CMSIS/Include HARDWARE/DHT11 HARDWARE/OLED HARDWARE/W25QXX SYSTEM/SYS SYSTEM/DELAY TEXT)
+include_directories(Core/Inc Drivers/STM32F1xx_HAL_Driver/Inc Drivers/STM32F1xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F1xx/Include Drivers/CMSIS/Include HARDWARE/DHT11 HARDWARE/OLED HARDWARE/W25QXX HARDWARE/HCSR04 SYSTEM/SYS SYSTEM/DELAY TEXT)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE)
 

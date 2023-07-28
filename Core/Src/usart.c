@@ -29,14 +29,15 @@ int __io_putchar(int ch)
     USART1->DR = (u8) ch;
     return ch;
 }
-int _write(int fd, char *pBuffer,int size)
-{
-    for(int i = 0; i < size; i++)
-    {
-        __io_putchar(*pBuffer++);
-    }
-    return size;
-}
+/*
+ * 重定向c库函数printf到USART
+ * */
+/*int fputc(int ch, FILE *f) {
+    uint8_t temp[1] = {ch};
+    HAL_UART_Transmit(&huart1, temp, 1, 2);
+    //HAL_UART_Transmit(&huart2, temp, 1, 2);
+    return ch;
+}*/
 
 //串口1中断服务程序
 //注意,读取USARTx->SR能避免莫名其妙的错误
@@ -111,7 +112,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
     /* USART1 interrupt Init */
-    HAL_NVIC_SetPriority(USART1_IRQn, 3, 3);
+    HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(USART1_IRQn);
   /* USER CODE BEGIN USART1_MspInit 1 */
 

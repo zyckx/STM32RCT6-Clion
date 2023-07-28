@@ -17,7 +17,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-
 #include <stdio.h>
 #include "main.h"
 #include "spi.h"
@@ -32,6 +31,7 @@
 #include "fontupd.h"
 #include "text.h"
 #include "gui.h"
+#include "hc-sr04.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,11 +52,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-/*下面主函数是使用HAL库函数实现控制IO口输出*/
-//要写入到W25Q16的字符串数组
-const u8 TEXT_Buffer[] = {"^-^Hello^-^"};
-#define SIZE sizeof TEXT_Buffer
-u16 VOLUME = 0;            //默认是W25Q16,所以是2M
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -76,7 +72,7 @@ void SystemClock_Config(void);
   */
 int main(void) {
     /* USER CODE BEGIN 1 */
-
+    float Distance;
     /* USER CODE END 1 */
 
     /* MCU Configuration--------------------------------------------------------*/
@@ -117,8 +113,9 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        Show_Str(0, 32, RED, WHITE, (u8 *) "张三1\r\n", 16, 1);
-
+        Distance = HC_SR04_Read();
+//        LCD_ShowNum(0, 0, Distance, 5, 16);    //显示数字
+        printf("Distance = %f\r\n", Distance);
         HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);    //LED0对应引脚PA8拉低，亮，等同于LED0(0)
         HAL_GPIO_WritePin(GPIOD, GPIO_PIN_2, GPIO_PIN_SET);    //LED1对应引脚PD2拉高，灭，等同于LED1(1)
         delay_ms(500);                                            //延时500ms
