@@ -49,11 +49,11 @@ else ()
     add_compile_options(-Og -g)
 endif ()
 
-include_directories(Core/Inc Drivers/STM32F1xx_HAL_Driver/Inc Drivers/STM32F1xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F1xx/Include Drivers/CMSIS/Include HARDWARE/DHT11 HARDWARE/OLED HARDWARE/W25QXX HARDWARE/HCSR04 SYSTEM/SYS SYSTEM/DELAY TEXT)
+include_directories(Core/Inc Drivers/STM32F1xx_HAL_Driver/Inc Drivers/STM32F1xx_HAL_Driver/Inc/Legacy Drivers/CMSIS/Device/ST/STM32F1xx/Include Drivers/CMSIS/Include HARDWARE/DHT11 HARDWARE/OLED HARDWARE/W25QXX HARDWARE/MPU6050 HARDWARE/MPU6050/eMPL HARDWARE/HCSR04 SYSTEM/SYS SYSTEM/DELAY TEXT)
 
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xE)
 
-file(GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*" HARDWARE/*.c HARDWARE/*.cpp HARDWARE/*.s HARDWARE/*.S SYSTEM/*.c SYSTEM/*.cpp SYSTEM/*.s SYSTEM/*.S TEXT/*.c TEXT/*.cpp TEXT/*.s TEXT/*.S)
+file(GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*" HARDWARE/*/*.* HARDWARE/*.c HARDWARE/*.cpp HARDWARE/*.s HARDWARE/*.S SYSTEM/*.c SYSTEM/*.cpp SYSTEM/*.s SYSTEM/*.S TEXT/*.c TEXT/*.cpp TEXT/*.s TEXT/*.S)
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F103RCTX_FLASH.ld)
 
